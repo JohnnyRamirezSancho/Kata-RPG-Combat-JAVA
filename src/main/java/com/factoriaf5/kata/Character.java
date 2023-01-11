@@ -22,29 +22,69 @@ public class Character {
         this.actualLevel = getActualLevel();
         this.alive = isAlive();
     }
-
+    
     public int getInitHealth() {
         return initHealth;
     }
 
-    public void setInitHealth(int health) {
-        this.initHealth = health;
+    public void setInitHealth(int initHealth) {
+        this.initHealth = initHealth;
+    }
+
+    public int getActualHealth() {
+        return actualHealth;
+    }
+
+    public void setActualHealth(int actualHealth) {
+        this.actualHealth = actualHealth;
     }
 
     public int getInitDamage() {
         return initDamage;
     }
 
-    public void setInitDamage(int damage) {
-        this.initDamage = damage;
+    public void setInitDamage(int initDamage) {
+        this.initDamage = initDamage;
     }
 
-    public int getLevel() {
+    public int getActualDamage() {
+        return actualDamage;
+    }
+
+    public void setActualDamage(int actualDamage) {
+        this.actualDamage = actualDamage;
+    }
+
+    public int getInitSanation() {
+        return initSanation;
+    }
+
+    public void setInitSanation(int initSanation) {
+        this.initSanation = initSanation;
+    }
+
+    public int getActualSanation() {
+        return actualSanation;
+    }
+
+    public void setActualSanation(int actualSanation) {
+        this.actualSanation = actualSanation;
+    }
+
+    public int getInitLevel() {
         return initLevel;
     }
 
-    public void setLevel(int level) {
-        this.initLevel = level;
+    public void setInitLevel(int initLevel) {
+        this.initLevel = initLevel;
+    }
+
+    public int getActualLevel() {
+        return actualLevel;
+    }
+
+    public void setActualLevel(int actualLevel) {
+        this.actualLevel = actualLevel;
     }
 
     public boolean isAlive() {
@@ -54,11 +94,11 @@ public class Character {
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
-    
+
     public void setDamage(Character character) {
         character.actualHealth -= this.initDamage;
-        setHealth(character.actualHealth);
-        if(character.getHealth() <= 0){
+        setActualHealth(character.actualHealth);
+        if(character.getActualHealth() <= 0){
             character.setAlive(false);
         }
     }
@@ -67,15 +107,10 @@ public class Character {
         if(!character.isAlive()){          
             return;
         }
-        character.health += this.sanation;
-        if(character.health > 1000){
-            character.health = 1000;
-
+        character.actualHealth += this.actualSanation;
+        if(character.actualHealth > 1000){
+            character.actualHealth = 1000;
         }
-        setHealth(character.health);
-        if(character.getHealth() <= 0){
-            character.setAlive(false);
-        }
+        setActualHealth(character.actualHealth);
     }
-    
 }
