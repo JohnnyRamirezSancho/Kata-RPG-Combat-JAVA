@@ -34,4 +34,42 @@ public class CharacterTest {
         assertFalse(otherCharacter.isAlive());
         assertTrue(otherCharacter.getActualHealth() < initHealth);
     }
+
+    @Test
+    public void character_alive_have_sanation () {
+        Character myCharacter = new Character();
+        Character otherCharacter = new Character();
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setSanation(otherCharacter);
+        assertTrue(otherCharacter.isAlive());
+        assertEquals(myCharacter.getActualHealth(), 950);
+   }
+
+    @Test
+    public void character_alive_not_have_more_of_1000_health () {
+        Character myCharacter = new Character();
+        Character otherCharacter = new Character();
+        myCharacter.setSanation(otherCharacter);
+        assertTrue(otherCharacter.isAlive());
+        assertEquals(myCharacter.getActualHealth(), 1000);
+   }
+
+    @Test
+    public void character_not_alive_not_have_sanation () {
+        Character myCharacter = new Character();
+        Character otherCharacter = new Character();
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setDamage(otherCharacter);
+        myCharacter.setSanation(otherCharacter);
+        assertFalse(otherCharacter.isAlive());
+        assertEquals(myCharacter.getActualHealth(), 0);
+   }
 }

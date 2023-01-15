@@ -4,9 +4,9 @@ public class Character {
     int initHealth = 1000;
     int actualHealth = initHealth;
     int initDamage = 100;
-    int actualDamage = 100;
-    int initSanation = 100;
-    int actualSanation = 100;
+    int actualDamage = initDamage;
+    int initSanation = 50;
+    int actualSanation = initSanation;
     int initLevel = 1;
     int actualLevel = initLevel;
     boolean alive = true;
