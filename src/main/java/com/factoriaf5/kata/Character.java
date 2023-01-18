@@ -96,9 +96,15 @@ public class Character {
     }
 
     public void setDamage(Character character) {
-        character.actualHealth -= this.initDamage;
+        if(this.equals(character)){
+            return;
+        }
+        character.actualHealth -= this.actualDamage;
+        if(character.actualHealth < 0) {
+            character.actualHealth = 0;
+        }
         setActualHealth(character.actualHealth);
-        if(character.getActualHealth() <= 0){
+        if(character.getActualHealth() == 0){
             character.setAlive(false);
         }
     }
